@@ -65,13 +65,13 @@ public final class MyTokenReader implements TokenReader {
       // get the token in form of a string
       tokenString = trimmedSource.substring(0, endIndexOfToken);
       
-    // case 1: token is a symbol
-    if(isSymbol(tokenString)) {
-      return new SymbolToken(tokenString.charAt(0));
-    }
-    // case 2: token is a number
-    else if(isNumber(tokenString)) {
+    // case 1: token is a number
+    if(isNumber(tokenString)) {
       return new NumberToken(Double.parseDouble(tokenString));
+    }
+    // case 2: token is a symbol
+    else if(isSymbol(tokenString)) {
+      return new SymbolToken(tokenString.charAt(0));
     }
     // case 3: token is a name
     else if(isName(tokenString)) {
@@ -88,16 +88,9 @@ public final class MyTokenReader implements TokenReader {
     
   }
   
-  // case 1: check if token is symbol
   
-  public boolean isSymbol(String tokenString) {
-	if(tokenString.length() == 1) {
-		return true;
-	}
-	return false;
-  }
   
-  //case 2: check if token is number
+  //case 1: check if token is number
   
   public boolean isNumber(String tokenString) {
 	try{
@@ -106,6 +99,15 @@ public final class MyTokenReader implements TokenReader {
 	} catch(NumberFormatException e) {
 	  return false;
 	}
+  }
+  
+  //case 2: check if token is symbol
+  
+  public boolean isSymbol(String tokenString) {
+	if(tokenString.length() == 1) {
+		return true;
+	}
+	return false;
   }
  
   //case 3: check if token is name
