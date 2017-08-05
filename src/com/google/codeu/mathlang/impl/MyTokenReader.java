@@ -64,6 +64,7 @@ public final class MyTokenReader implements TokenReader {
       
       // get the token in form of a string
       tokenString = trimmedSource.substring(0, endIndexOfToken);
+    }  
       
     // case 1: token is a number
     if(isNumber(tokenString)) {
@@ -81,10 +82,6 @@ public final class MyTokenReader implements TokenReader {
     else {
       return new StringToken(tokenString);
     }
-    
-    }
-    
-    return nullToken;
     
   }
   
